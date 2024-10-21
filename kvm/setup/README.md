@@ -1,7 +1,12 @@
-Steps to manually setup local repo
-* If not done already, create keys: ssh-keygen -t rsa
-* Copy the pub key into the github account
-* git config --global user.email brianculp.work@gmail.com
-* git config --global user.name brianculp1
-* cd <wherever>
-* git clone git@github.com:brianculp1/learning_sysadmin.git
+* Enable virtualization in BIOS, if necessary
+* Verify enabled: 
+  * lscpu | grep Virtualization
+  * lsmod | grep kvm # should show both kvm and kvm_intel
+  * kvm-ok # should show "acceleration can be used"
+* Install packages: sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients virt-manager
+* Add yourself to kvm group: sudo adduser serveradmin kvm
+* To enable rootless root vm access
+  * sudo cp -rv /etc/libvirt/libvirt.conf ~/.config/libvirt/ && 
+  * sudo chown serveradmin:serveradmin ~/.config/libvirt/libvirt.conf
+  * assumes serveradmin is a member of an admin group
+* reboot
