@@ -4,4 +4,4 @@ Steps to manually setup local repo
 * git config --global user.email brianculp.work@gmail.com
 * git config --global user.name brianculp1
 * cd <wherever>
-* git clone git@github.com:brianculp1/learning_sysadmin.git
+* git clone git@github.com:brianculp1/test_environment.git
