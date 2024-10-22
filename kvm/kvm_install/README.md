@@ -5,7 +5,13 @@
 * kvm-ok # should show "acceleration can be used"
 
 ### Install packages
-* sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients virt-manager
+* sudo dnf install qemu-kvm libvirt-daemon-system libvirt-clients libvirt virt-install virt-viewer virt-manager
+
+### Start drivers
+* for drv in qemu network nodedev nwfilter secret storage interface; do sudo systemctl start virt${drv}d{,-ro,-admin}.socket; done
+
+### Validate health
+* virt-host-validate
 
 ### Setup user in right group & enable rootless vm access
 * sudo adduser serveradmin kvm
